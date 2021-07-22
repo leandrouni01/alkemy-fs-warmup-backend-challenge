@@ -19,7 +19,19 @@ exports.findAll = (req, res) => {
 }
 
 exports.findOne = (req, res) => {
-
+  Post.findByPk(req.params.id,{
+    raw: true,
+    include: [
+      {model: PostCategory, required: true}
+    ]
+  })
+  .then((data)=> {
+    if(data === null) return res.status(404).send("Post not found");
+    return res.status(200).send(data);
+  })
+  .catch((err)=> {
+    return res.status(500).send(err.message);
+  })
 }
 
 exports.create = (req, res) => {
