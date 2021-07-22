@@ -3,7 +3,9 @@ const PostCategory = require('../models/PostCategory');
 
 exports.findAll = (req, res) => {
   Post.findAll({
-    exclude: ["content"],
+    attributes: {
+      exclude:["content"]
+    },
     include: [
       {model: PostCategory, required: true}
     ]
