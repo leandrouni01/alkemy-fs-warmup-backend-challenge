@@ -35,7 +35,13 @@ exports.findOne = (req, res) => {
 }
 
 exports.create = (req, res) => {
-
+  Post.create(req.body,{fields: ['title', 'content', 'image', "PostCategoryId"]})
+  .then((post) => {
+    return res.status(200).send({id: post.id});
+  })
+  .catch((err) => {
+    return res.status(500).send(err.message);
+  })
 }
 
 exports.update = (req, res) => {
