@@ -1,4 +1,6 @@
 const db = require('../database/DatabaseConection');
+const { DataTypes } = require('sequelize');
+const PostCategory = require('./PostCategory');
 
 const Post = db.define(
   "Post",{
