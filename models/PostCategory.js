@@ -4,7 +4,9 @@ const { DataTypes } = require('sequelize');
 const PostCategory = db.define(
     "PostCategory", {
     categoryName: {
-      type: DataTypes.STRING
+      type: DataTypes.STRING,
+      allowNull: false,
+      unique: {msg: "Category already exists"}
     }
   }
 )
