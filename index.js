@@ -22,8 +22,10 @@ app.use(express.urlencoded({extended: true}));
 
 //Routes
 const postCategoryRoutes = require('./routes/postCategory');
+const postRoutes = require('./routes/post');
 
 app.use('/post-categories', postCategoryRoutes);
+app.use('/posts', postRoutes);
 
 app.listen(PORT, () => {
   console.log("Server listening on port: " + PORT);
