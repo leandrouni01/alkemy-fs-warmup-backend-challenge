@@ -11,7 +11,14 @@ exports.findAll = (req,res) => {
 }
 
 exports.findOne = (req,res) => {
-
+  PostCategory.findByPk(req.params.id)
+  .then((data)=> {
+    if(data === null) return res.status(404).send("Category not found");
+    return res.status(200).send(data);
+  })
+  .catch((err)=> {
+    return res.status(500).send(err.message);
+  })
 }
 
 exports.create = (req,res) => {
