@@ -32,7 +32,17 @@ exports.create = (req,res) => {
 }
 
 exports.update = (req,res) => {
-
+  PostCategory.update(req.body, {
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(() => {
+    return res.status(200).send("Category updated");
+  })
+  .catch((err) => {
+    return res.status(500).send(err.message);
+  })
 }
 
 exports.remove = (req,res) => {
