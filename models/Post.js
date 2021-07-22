@@ -18,15 +18,10 @@ const Post = db.define(
     },
     image: {
       type: DataTypes.STRING
-    },
-    category: {
-      type: DataTypes.INTEGER,
-      references: {
-        model: PostCategory,
-        key: "id"
-      }
     }
   }
 )
+
+Post.belongsTo(PostCategory);
 
 module.exports = Post;
