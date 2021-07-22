@@ -10,3 +10,5 @@ router.get('/:id', findOne);
 router.post('', create);
 router.patch('/:id', update);
 router.delete('/:id', remove);
+
+module.exports = router;
