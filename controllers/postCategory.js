@@ -22,7 +22,13 @@ exports.findOne = (req,res) => {
 }
 
 exports.create = (req,res) => {
-
+  PostCategory.create(req.body,{fields: ['categoryName']})
+  .then((postCategory) => {
+    return res.status(200).send({id: postCategory.id});
+  })
+  .catch((err) => {
+    return res.status(500).send(err.message);
+  })
 }
 
 exports.update = (req,res) => {
