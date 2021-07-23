@@ -59,5 +59,15 @@ exports.update = (req, res) => {
 }
 
 exports.remove = (req, res) => {
-
+  Post.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(() => {
+    return res.status(200).send("Post deleted");
+  })
+  .catch((err) => {
+    return res.status(500).send(err.message);
+  })
 }
