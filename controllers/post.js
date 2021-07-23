@@ -45,7 +45,17 @@ exports.create = (req, res) => {
 }
 
 exports.update = (req, res) => {
-
+  Post.update(req.body, {
+    where: {
+      id: req.params.id
+    }
+  })
+  .then(() => {
+    return res.status(200).send("Post updated");
+  })
+  .catch((err) => {
+    return res.status(500).send(err.message);
+  })
 }
 
 exports.remove = (req, res) => {
